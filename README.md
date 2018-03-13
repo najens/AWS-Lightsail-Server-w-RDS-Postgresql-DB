@@ -145,7 +145,7 @@ $ sudo adduser <username>
 $ sudo mkdir /home/<username>/.ssh
 ```
 - Create an authorized_keys file for the user
-```
+``
 $ sudo nano /home/<username>/.ssh/authorized_keys
 ```
 - Paste the user's public key and save the file
@@ -184,3 +184,57 @@ $ ssh -N -L 63333:<RDS Instance Endpoint>:5432 <lightsail username>@<public ip a
 ```
 $ psql --host=<RDS instance endpoint> --port=5432 --username=<username> --password --dbname=<database> 
 ```
+
+## Create Database
+```
+=> CREATE DATABASE catalog OWNER ubuntu;
+```
+
+## Create PostgreSQL users
+```
+=> CREATE USER catalog WITH PASSWORD 'catalog';
+```
+- Grant user permissions to connect to database
+```
+GRANT CONNECT ON DATABASE catalog TO catalog;
+```
+
+## Install Project And Configure Apache
+- Clone github repository
+```
+$ cd /var/www
+$ sudo git clone https://github.com/najens/item_catalog.git catalog
+```
+- Create virtual environment and activate it
+```
+$ cd /
+$ sudo mkdr .venvs
+$ sudo python3 -m venv .venvs/catalog
+$ source .venvs/catalog/bin/activate
+```
+- Install requirements.txt packages
+```
+$ cd /var/www/catalog
+$ sudo pip3 install --upgrade pip
+$ sudo pip3 install -r requirements.txt
+```
+## Configure [WSGI Application](http://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html)
+- Create an Apache mod-wsgi configuration file
+```
+$ cd ~
+$ sudo nano /etc/apache2/sites-available/catalog.conf
+```
+- Paste the following contents in the file
+```
+<VirtualHost *:80>
+    ServerName 54.187.128.113
+
+    WSGIScriptAlias / /var/www/catalog/run.py
+
+    <Directory /var/www/catalog>
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
+- Replace ServerName with Lightsail public IP address and save
