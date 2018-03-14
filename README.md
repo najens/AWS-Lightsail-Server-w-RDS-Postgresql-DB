@@ -317,8 +317,9 @@ $ sudo cat /var/log/apache2/error.log
 
 
 ## References
-[Digital Ocean: How to Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
-[Stack Overflow: Testing flask-oauthlib locally without https](https://stackoverflow.com/questions/27785375/testing-flask-oauthlib-locally-without-https)
-[Ubuntu: Sudoers](https://help.ubuntu.com/community/Sudoers)
-[Vsupalov: Using SQLAlchemy with Flask to Connect to PostgreSQL](https://vsupalov.com/flask-sqlalchemy-postgres/)
-[Deploy Django on Apache with Virtualenv and mod-wsgi](https://www.thecodeship.com/deployment/deploy-django-apache-virtualenv-and-mod_wsgi/)
+- [Digital Ocean: How to Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+- [Stack Overflow: Testing flask-oauthlib locally without https](https://stackoverflow.com/questions/27785375/testing-flask-oauthlib-locally-without-https)
+- [Ubuntu: Sudoers](https://help.ubuntu.com/community/Sudoers)
+- [Vsupalov: Using SQLAlchemy with Flask to Connect to PostgreSQL](https://vsupalov.com/flask-sqlalchemy-postgres/)
+- [Deploy Django on Apache with Virtualenv and mod-wsgi](https://www.thecodeship.com/deployment/deploy-django-apache-virtualenv-and-mod_wsgi/)
+- [mod_wsgi: Virtual Environments](http://modwsgi.readthedocs.io/en/develop/user-guides/virtual-environments.html)
