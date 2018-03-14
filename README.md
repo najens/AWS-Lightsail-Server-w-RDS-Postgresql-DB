@@ -8,10 +8,10 @@ Instructions to setup an AWS Lightsail Server with Apache2, Flask, and an RDS Po
 ### Login to Ubuntu Machine
 - IP Address: **34.213.222.89**
 - SSH Port: **2200**
-- Private Key: located in student notes save as **grader* (file when saved should not have extension i.e. grader.rsa, grader.txt)
+- Private Key: located in student notes save as **grader** (file when saved should not have extension i.e. grader.rsa, grader.txt)
 - Passphrase: **udacity**
 
-### Connect to the RDS Database
+### Connect to the RDS Database*
 - The catalog user only has connect priveleges
 ```
 psql --host=udlightsaildbinstance.c3holytuhjpo.us-west-2.rds.amazonaws.com  --port=5432 --username=catalog --password --dbname=catalog
