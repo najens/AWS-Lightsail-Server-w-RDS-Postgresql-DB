@@ -265,6 +265,10 @@ $ sudo nano /etc/apache2/sites-available/catalog.conf
 ```
 $ sudo a2ensite catalog
 ```
+- Disable the default site
+```
+$ sudo a2dissite 000-default.conf
+```
 - Reload Apache
 ```
 $ sudo service apache2 reload
