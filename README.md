@@ -8,39 +8,7 @@ Instructions to setup an AWS Lightsail Server with Apache2, Flask, and an RDS Po
 ### Login to Ubuntu Machine
 - IP Address: **34.213.222.89**
 - SSH Port: **2200**
-- Private Key:
-```
-----BEGIN RSA PRIVATE KEY-----
-Proc-Type: 4,ENCRYPTED
-DEK-Info: AES-128-CBC,6BC0125F17611C9CA248FE33E38D5426
-
-LHmLc0yPx2xDQky+tgEDVYlEYLkNsQ1pOJ2rCYUdSCO0rfoDZ2DNGbY486ortmCC
-IDRob2of8rQAgDVlr1qnW/Q7UZ+uUYqxHlE4WLKN/3yenOhimDtr6VU+f9V3MZ1F
-HXR1FKiin1qeuCqDqTckMzdhTUJn1Vqi8GAl6qpPfrV02UlSUMpK5I7suYhQIIIv
-yfTJKrEvDKAxHC6JGJqUrgcGYs/07N3/ga7YbgcP30KNx3juF8b+crH37FKv3aHh
-A7Wo53Whe7ba5w+DP7jDp+lESlqp1qystsRgkws3P12hLeYfiFkcNfh7vPm3WfoF
-6JTyQVP5swbYoS8Yvc8oO2hENyKRdII/cxYMHxBaJqY6ULwpQyar9uDlgKf1NbSd
-hq0+TkxQjEsVVo3MqWIjUhte6TnfMIvbph9wE9U7jBCJH4wn705CSTa816xg+V2f
-1b1dB/W600oQiu9Pt1il1s6sjqUpoZvedPGMZD7NDuVGuHEjKt1DbsN7sNvzAA4c
-0Lg4bzwlkMit/gH9FVa55aOKd6I6G4/Uqt7R/vv0qD1BkT57XPyyhbU94gUiWMje
-LJd8Mh1LRZV2qrsPQKeDzZGEBW8vNd2m+Tk/dgfwBhYYPgl6yekhPgeSAnRPmN8k
-Nxdko/y1PDhMMg9mZ+87ZfxKjdrAcP5smckyMInjyAMfdD9wIwNuCl+u/Prgc+KF
-QP8uYcbej4oIH5cWqIQpud55soZ27Gtk2rKCFbcWj/55bieVBWzsUWui/uGw7alf
-0bHkSL4UuhiXJ7ln3xIQVt2rMfhgrjRKi4IFxoGBnWxGUvB1koF3FZGmudpgSh5o
-S5/RnqjGql6QXcggv8n7AoSvurvULUaKm4jnhw9+Zz6fe21LaHIVSlu8Y2KLWf6r
-FaFeob0Hh4+TGL/a89pfXoGFF7SDy7lbBTIpzVGiocQkXVf9HPKpTEu8Aj3S4lIo
-poPdUwazKNsHq78vbw4Lkkg+W4/A5UXsuqA+YLc+dp7CZh4QqbGqQtTBQRPn/TQM
-UrLoShhFDobFhKh/7UZ7MEYyHxrTL/IPdVWqc0J1nyXoURyUK4Gy+yh+u5RhI0mG
-RepxSu50i8DTQqIwO96wvapmT2a8AC0sgABfOfQe7pUABZMYGFy3L9dXETs84O7I
-WNXl7FWV9AOq5RwUPJqFBfy1HC0i/ivPRbRYBzoyVXv47OWuPhUo4U3tSI1nL2KO
-CqIO/Uc03rnRq6pNPvRej43uwAdCtEpiiSuRNAnRlSkqG//uw52lGWuOiQSlTOI5
-hVxZ5jiOXFVS0QQCp3F/LsbmHTdRu8V40wWhcfvmac02g8iTcqIR583HItrW5D6d
-rTHLCYXsOnploTck00RbZ8ecao94++wcVSoMXq+nyQDSlw3dcFXnCvUbtQwWcuhG
-XbWyHhOpCQV6QPPWRQTZ9kexUqOi8w9QiuY/s12uI1hSHQcbWHSkETUQ8msneSyu
-YMErKtO9RUcu820rohd4IvovisyvG8R8C9WLr2fNFQsulnXTIW0gqEmXAbquU7nV
-lI/XJB5LkMdemnCIsjZU6PokMYyjQaTBOPrPUo6i5xaz9Eg2qc6lhvjvLtv+i5MY
------END RSA PRIVATE KEY-----
-```
+- Private Key: located in student notes save as **grader* (file when saved should not have extension i.e. grader.rsa, grader.txt)
 - Passphrase: **udacity**
 
 ### Connect to the RDS Database
