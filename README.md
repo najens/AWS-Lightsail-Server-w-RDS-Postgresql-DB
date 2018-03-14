@@ -1,6 +1,58 @@
 # AWS-Lightsail-Server-w-RDS-Postgresql-DB
 Instructions to setup an AWS Lightsail Server with Apache2, Flask, and an RDS Postgresql DB
 
+# Notes to Reviewer
+
+### View the running web application at www.monteguia.com
+
+### Login to Ubuntu Machine
+- IP Address: **34.213.222.89**
+- SSH Port: **2200**
+- Private Key:
+```
+----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,6BC0125F17611C9CA248FE33E38D5426
+
+LHmLc0yPx2xDQky+tgEDVYlEYLkNsQ1pOJ2rCYUdSCO0rfoDZ2DNGbY486ortmCC
+IDRob2of8rQAgDVlr1qnW/Q7UZ+uUYqxHlE4WLKN/3yenOhimDtr6VU+f9V3MZ1F
+HXR1FKiin1qeuCqDqTckMzdhTUJn1Vqi8GAl6qpPfrV02UlSUMpK5I7suYhQIIIv
+yfTJKrEvDKAxHC6JGJqUrgcGYs/07N3/ga7YbgcP30KNx3juF8b+crH37FKv3aHh
+A7Wo53Whe7ba5w+DP7jDp+lESlqp1qystsRgkws3P12hLeYfiFkcNfh7vPm3WfoF
+6JTyQVP5swbYoS8Yvc8oO2hENyKRdII/cxYMHxBaJqY6ULwpQyar9uDlgKf1NbSd
+hq0+TkxQjEsVVo3MqWIjUhte6TnfMIvbph9wE9U7jBCJH4wn705CSTa816xg+V2f
+1b1dB/W600oQiu9Pt1il1s6sjqUpoZvedPGMZD7NDuVGuHEjKt1DbsN7sNvzAA4c
+0Lg4bzwlkMit/gH9FVa55aOKd6I6G4/Uqt7R/vv0qD1BkT57XPyyhbU94gUiWMje
+LJd8Mh1LRZV2qrsPQKeDzZGEBW8vNd2m+Tk/dgfwBhYYPgl6yekhPgeSAnRPmN8k
+Nxdko/y1PDhMMg9mZ+87ZfxKjdrAcP5smckyMInjyAMfdD9wIwNuCl+u/Prgc+KF
+QP8uYcbej4oIH5cWqIQpud55soZ27Gtk2rKCFbcWj/55bieVBWzsUWui/uGw7alf
+0bHkSL4UuhiXJ7ln3xIQVt2rMfhgrjRKi4IFxoGBnWxGUvB1koF3FZGmudpgSh5o
+S5/RnqjGql6QXcggv8n7AoSvurvULUaKm4jnhw9+Zz6fe21LaHIVSlu8Y2KLWf6r
+FaFeob0Hh4+TGL/a89pfXoGFF7SDy7lbBTIpzVGiocQkXVf9HPKpTEu8Aj3S4lIo
+poPdUwazKNsHq78vbw4Lkkg+W4/A5UXsuqA+YLc+dp7CZh4QqbGqQtTBQRPn/TQM
+UrLoShhFDobFhKh/7UZ7MEYyHxrTL/IPdVWqc0J1nyXoURyUK4Gy+yh+u5RhI0mG
+RepxSu50i8DTQqIwO96wvapmT2a8AC0sgABfOfQe7pUABZMYGFy3L9dXETs84O7I
+WNXl7FWV9AOq5RwUPJqFBfy1HC0i/ivPRbRYBzoyVXv47OWuPhUo4U3tSI1nL2KO
+CqIO/Uc03rnRq6pNPvRej43uwAdCtEpiiSuRNAnRlSkqG//uw52lGWuOiQSlTOI5
+hVxZ5jiOXFVS0QQCp3F/LsbmHTdRu8V40wWhcfvmac02g8iTcqIR583HItrW5D6d
+rTHLCYXsOnploTck00RbZ8ecao94++wcVSoMXq+nyQDSlw3dcFXnCvUbtQwWcuhG
+XbWyHhOpCQV6QPPWRQTZ9kexUqOi8w9QiuY/s12uI1hSHQcbWHSkETUQ8msneSyu
+YMErKtO9RUcu820rohd4IvovisyvG8R8C9WLr2fNFQsulnXTIW0gqEmXAbquU7nV
+lI/XJB5LkMdemnCIsjZU6PokMYyjQaTBOPrPUo6i5xaz9Eg2qc6lhvjvLtv+i5MY
+-----END RSA PRIVATE KEY-----
+```
+- Passphrase: **udacity**
+
+### Connect to the RDS Database
+- The catalog user only has connect priveleges
+```
+psql --host=udlightsaildbinstance.c3holytuhjpo.us-west-2.rds.amazonaws.com  --port=5432 --username=catalog --password --dbname=catalog
+```
+- The catalog user's password is **udacity**
+
+
+# Setup Instructions
+
 ## Software Require)ments
 - [Bash CLI with Git](https://git-scm.com/downloads)
 
@@ -10,10 +62,8 @@ Instructions to setup an AWS Lightsail Server with Apache2, Flask, and an RDS Po
 ```
 $ ssh-keygen
 ```
-- Give the file a unique name identifying the user and save it in your .ssh directory on your local machine (on Windows this is /c/Users/<user>/.ssh/<unique_file_name>).
+- Give the file a unique name identifying the user (i.e. ubuntu) and save it in your .ssh directory on your local machine (on Windows this is /c/Users/<user>/.ssh/<project_name>/<unique_file_name>).
 - Give the user a passhphrase  
-    - The grader private key filename is **ud_grader**
-    - The grader passhphrase is **udacity**
 
 ## Setup AWS Lightsail
 - Sign into the [aws console](https://aws.amazon.com/lightsail/)
@@ -38,52 +88,32 @@ $ ssh-keygen
 - In the top right corner of the screen click **Account**
 - On the Account page click **Advanced**
 - Under VPC Peering click **Enable VPC peering**
-
-## Setup RDS PostgreSQL Database
-### Create New DB Instance
-- Go back to the AWS Console
-- Under AWS services click **Relational Database Service** under the Database category
-- Click on the **Instances** tab
-- Click **Launch DB Instance**
-- Select **PostgreSQL**
-- Select **Next**
-- Under Instance specifications use default settings and select **Free tier**
-- Under Settings fill out the following:
-    - DB instance identifier <your instance identifer>
-    - Master username <**ubuntu**> (should match the Lightsail username)
-    - Master password <your master password>
-- Click **Next**
-- Under Network & Security keep default settings, but change Public Accessibility to **Yes**
-- Under Database options keep default settings but type in <**ubuntu**> for Database name to match PostgreSQL Master username and Lightsail username
-- Keep all other settings at the default value unless you feel a need to change them such as the backup retention period
-- Select **Launch DB instance**
-- Click **Database instance details**
-- Under the details section find the endpoint for future reference, you will use this to configure your SQLALCHEMY_DATABASE_URI and to connect to the database from your server or local machine via PG Admin. Each of these connections will require this endpoint, the port number 5432, the Master username, the Master password, and the database you wish to connect to.
-  
-### Add lighthouse VPC to RDS Security Group
-- In the top left corner of your screen click on **Services**
-- Click on **VPC** under the Networking & Content Deliver category   
-- Under VPC resources click on **VPC Peering Connections**
-- Copy the value in the Requester CIDRs column
-- In the top left corner of the your screen click on **Services**
-- Click on **EC2** under the Compute category
-- Under Resources click on **Security Groups**
-- Click on the **rds-launch-wizard** security group
-- At the bottom of the screen click on **Inbound**
-- Click on **Edit**
-- Click on **Add Rule**
-- Change the type to **PostgreSQL**
-- Paste in the CIDR and click **Save**
   
 ## Log into Lightsail Ubuntu Machine from Bash CLI
 - From the AWS Console go to Lightsail and open your instance
 - You will use the Public IP and Username as well as your private key to log in
 - Log in from the Bash CLI
 ```
-$ ssh <Username>@<Public IP Address> -p 22 -i ~/.ssh/<private_key_file_name>
+$ ssh <Username>@<Public IP Address> -p 22 -i ~/.ssh/<project_name>/<private_key_file_name>
 ```
 - If you receive a prompt that asks 'Are you sure you want to continue connecting?', type **yes**
 - Enter the passphrase you created for the user
+
+## Install Packages
+```
+$ sudo apt-get update
+$ sudo apt-get -y upgrade
+$ sudo apt-get install finger
+$ sudo apt-get install -y python3 python3-venv python3-pip
+$ sudo apt-get install -y apache2
+$ sudo apt-get install libapache2-mod-wsgi-py3
+$ sudo apt-get install -y postgresql postgresql-contrib
+$ sudo apt-get install git
+$ sudo apt-get autoremove -y
+$ sudo apt-get install -y python-dev
+$ sudo apt-get install -y libpq-dev
+$ sudo pip3 install psycopg2
+```
 
 ## Setup Uncomplicated Firewall
 - Change the configured SSH port
@@ -113,24 +143,9 @@ $ exit
 - Delete SSH TCP Port 22 and click **Save**
 - Log back into the ubuntu machine using the new ssh port
 ```
-$ ssh <Username>@<Public IP Address> -p 2200 -i ~/.ssh/<private_key_file_name>
+$ ssh <Username>@<Public IP Address> -p 2200 -i ~/.ssh/<project_name>/<private_key_file_name>
 ```
-## Install Packages
-```
-$ sudo add-apt-repository -y ppa:jonathonf/python-3.6
-$ sudo apt-get update
-$ sudo apt-get -y upgrade
-$ sudo apt-get install finger
-$ sudo apt-get install -y python3.6 python3.6-venv
-$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
-$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
-$ sudo apt-get install -y python3-pip
-$ sudo apt-get install -y apache2
-$ sudo apt-get install libapache2-mod-wsgi-py3
-$ sudo apt-get install -y postgresql postgresql-contrib
-$ sudo apt-get install git
-$ sudo apt-get autoremove -y
-```
+
 
 ## Create New Ubuntu Users
 - Repeat the following steps for each user
@@ -166,7 +181,7 @@ $ sudo nano /etc/sudoers.d/<username>
 ```
 - Add the following line to the file and save it
 ```
-grader ALL=(ALL) NOPASSWD:ALL
+<username> ALL=(ALL) NOPASSWD:ALL
 ```
 
 ## Configure Timezone
@@ -175,10 +190,47 @@ grader ALL=(ALL) NOPASSWD:ALL
 $ sudo dpkg-reconfigure tzdata
 ```
 
-## SSH into Remote PostgreSQL DB from Ubuntu Machine
+## Setup RDS PostgreSQL Database
+### Create New DB Instance
+- Go back to the AWS Console
+- Under AWS services click **Relational Database Service** under the Database category
+- Click on the **Instances** tab
+- Click **Launch DB Instance**
+- Select **PostgreSQL**
+- Select **Next**
+- In the Bash CLI check what version of PostgreSQL is on your server
 ```
-$ ssh -N -L 63333:<RDS Instance Endpoint>:5432 <lightsail username>@<public ip address> -p 2200 -i ~/.ssh/<private_key_file_name>
+$ psql --version
 ```
+- Under Instance specifications in the Select the DB version on your Ubuntu machine or the closest one below it.
+- For the other items under Instance specifications use the default settings and select **Free tier**
+- Under Settings fill out the following:
+    - DB instance identifier <your instance identifer>
+    - Master username <**ubuntu**> (should match the Lightsail username)
+    - Master password <your master password>
+- Click **Next**
+- Under Network & Security keep default settings, leave Public Accessibility at **No**
+- Under Database options keep default settings but type in <**ubuntu**> for Database name to match PostgreSQL Master username and Lightsail username
+- Keep all other settings at the default value unless you feel a need to change them such as the backup retention period
+- Select **Launch DB instance**
+- Click **Database instance details**
+- Under the details section find the endpoint for future reference, you will use this to configure your SQLALCHEMY_DATABASE_URI and to connect to the database from your server or via PG Admin. Each of these connections will require this endpoint, the port number 5432, the Master username, the Master password, and the database you wish to connect to.
+  
+### Add lighthouse VPC to RDS Security Group
+- In the top left corner of your screen click on **Services**
+- Click on **VPC** under the Networking & Content Deliver category   
+- Under VPC resources click on **VPC Peering Connections**
+- If there isn't an active vpc repeat the steps earlier to enable vpc peering from lightsail
+- Copy the value in the Requester CIDRs column
+- In the top left corner of your screen click on **Services**
+- Click on **EC2** under the Compute category
+- Under Resources click on **Security Groups**
+- Click on the **rds-launch-wizard** security group
+- At the bottom of the screen click on **Inbound**
+- Click on **Edit**
+- Click on **Add Rule**
+- Change the type to **PostgreSQL**
+- Paste in the CIDR and click **Save**
 
 ## Login to PostgreSQL from Ubuntu Machine
 ```
@@ -192,11 +244,12 @@ $ psql --host=<RDS instance endpoint> --port=5432 --username=<username> --passwo
 
 ## Create PostgreSQL users
 ```
-=> CREATE USER catalog WITH PASSWORD 'catalog';
+=> CREATE USER <username> WITH PASSWORD <'password'>;
 ```
 - Grant user permissions to connect to database
 ```
-GRANT CONNECT ON DATABASE catalog TO catalog;
+=> GRANT CONNECT ON DATABASE catalog TO catalog;
+=> \q
 ```
 
 ## Install Project And Configure Apache
@@ -207,16 +260,17 @@ $ sudo git clone https://github.com/najens/item_catalog.git catalog
 ```
 - Create virtual environment and activate it
 ```
-$ cd /
-$ sudo mkdr .venvs
-$ sudo python3 -m venv .venvs/catalog
-$ source .venvs/catalog/bin/activate
+$ cd ~
+$ sudo mkdr /.venvs
+$ sudo python3 -m venv /.venvs/catalog
+$ sudo chown -R <username>:<group> /.venvs/catalog
+$ source /.venvs/catalog/bin/activate
 ```
 - Install requirements.txt packages
 ```
 $ cd /var/www/catalog
-$ sudo pip3 install --upgrade pip
-$ sudo pip3 install -r requirements.txt
+$ pip3 install --upgrade pip
+$ pip3 install -r requirements.txt
 ```
 ## Configure [WSGI Application](http://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html)
 - Create an Apache mod-wsgi configuration file
@@ -227,7 +281,8 @@ $ sudo nano /etc/apache2/sites-available/catalog.conf
 - Paste the following contents in the file
 ```
 <VirtualHost *:80>
-    ServerName 54.187.128.113
+    ServerName www.monteguia.com
+    ServerAlias monteguia.com
 
     WSGIScriptAlias / /var/www/catalog/run.py
 
@@ -237,4 +292,33 @@ $ sudo nano /etc/apache2/sites-available/catalog.conf
     </Directory>
 </VirtualHost>
 ```
-- Replace ServerName with Lightsail public IP address and save
+- Replace ServerName with Lightsail public IP address or Domain you will use and save
+- Enable the site
+```
+$ sudo a2ensite catalog
+```
+- Reload Apache
+```
+$ sudo service apache2 reload
+```
+- Visit the Lightsail public IP address to view your running application
+- If there are any errors, you can view them in the following log
+```
+$ sudo cat /var/log/apache2/error.log
+```
+
+## Give Lightsail Public IP a Domain Name
+- Purchase a domain from [GoDaddy.com](https://www.godaddy.com/)
+- Under Domain Settings click on **Manage DNS** near the bottom of the page
+- Edit Type A and paste your Lightsail public IP address in the Points to input box then save
+- Edit the Type CNAME with Name www and type the @ symbol in the Points to input box then save
+
+## Open your running app at the new domain
+
+
+## References
+[Digital Ocean: How to Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+[Stack Overflow: Testing flask-oauthlib locally without https](https://stackoverflow.com/questions/27785375/testing-flask-oauthlib-locally-without-https)
+[Ubuntu: Sudoers](https://help.ubuntu.com/community/Sudoers)
+[Vsupalov: Using SQLAlchemy with Flask to Connect to PostgreSQL](https://vsupalov.com/flask-sqlalchemy-postgres/)
+[Deploy Django on Apache with Virtualenv and mod-wsgi](https://www.thecodeship.com/deployment/deploy-django-apache-virtualenv-and-mod_wsgi/)
