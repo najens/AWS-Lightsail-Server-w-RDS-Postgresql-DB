@@ -160,7 +160,7 @@ $ sudo adduser <username>
 $ sudo mkdir /home/<username>/.ssh
 ```
 - Create an authorized_keys file for the user
-``
+```
 $ sudo nano /home/<username>/.ssh/authorized_keys
 ```
 - Paste the user's public key and save the file
